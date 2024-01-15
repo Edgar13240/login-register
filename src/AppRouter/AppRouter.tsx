@@ -1,21 +1,17 @@
 import React from "react";
-import {BrowserRouter as Router, Outlet, Route, Routes} from "react-router-dom";
-import PrivateRoute from "../route/PrivateRoute";
-import Home from "../component/Home";
-import LoginForm from "../component/LoginForm";
-import RegisterForm from "../component/RegisterForm";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import AuthForm from "../component/AuthForm";
+import UserProfile from "../component/UserProfile";
+import HomePage from "../component/HomePage";
 
 const AppRouter: React.FC = () => {
     return (
         <Router>
             <Routes>
-                <Route
-                    path="/"
-                    element={<Outlet />}>
-                    <PrivateRoute path="/" element={<Home />} />
-                    <Route path="/login" element={<LoginForm />} />
-                    <Route path="/register" element={<RegisterForm />} />
-                </Route>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<AuthForm isLogin={true} />} />
+                <Route path="/register" element={<AuthForm isLogin={false} />} />
+                <Route path="/user" element={<UserProfile />} />
             </Routes>
         </Router>
     )
